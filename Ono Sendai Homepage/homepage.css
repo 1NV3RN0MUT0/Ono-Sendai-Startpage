@@ -139,6 +139,10 @@ form{
 	transition: 0.50s linear;
 	
 }
+ 
+input:focus::-webkit-input-placeholder {
+    opacity: 0;
+}
 
 .go{
 	height: 26px;
