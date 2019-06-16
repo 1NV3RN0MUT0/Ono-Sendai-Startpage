@@ -23,8 +23,9 @@ body{
 	-o-background-size: cover;
 	background-size: cover;
 	
-	padding-top: 2%;
-	font-size: 20px;
+	padding-top: 5%;
+	font: Steelfish;
+	font-size: 16px;
 	-webkit-font-smoothing: antialiased;
 	width: 1000px;
 	height: 100px;
@@ -33,13 +34,21 @@ body{
 	
 }
 
-p, li, a{
-	color: #fd7070;
+p{
+	color: #ff0101;
 	font-family: Steelfish, Lato, courier new;
 	letter-spacing:1px;
 	text-align:left;
+	font: Steelfish, Lato, courier new;
 }
 
+li, a{
+	color: #ffffff;
+	font-family: Steelfish, Lato, courier new;
+	letter-spacing:1px;
+	text-align:left;
+	font: Steelfish, Lato, courier new;
+}
 /*
 	Favorite
 */
@@ -50,7 +59,7 @@ p, li, a{
 }
 
 .favorites p{
-	border-bottom: 1px solid #fd7070;
+	border-bottom: 1px solid #ff0101;
 	padding-right: 100%;
 }
 
@@ -68,12 +77,14 @@ p, li, a{
 a{
 	text-decoration: none;
 	display: block;
-	padding: 3px;
+	padding: 2px;
+	text-align: center;
 }
 
 a:hover{
 	color: #222;
-	background: #fd7070;
+	background: #ff0101;
+	
 }
 
 /*
@@ -87,9 +98,10 @@ a:hover{
 
 .googles p{
 	display: inline-block;
-	width: 18%;
+	width: 15%;
 	margin: 0 10px;
 	border: 1px solid #ff0101;
+	text-align: center;
 }
 	
 /*
@@ -108,22 +120,26 @@ form{
 	width: 400px;
 	height: 20px;
 	margin-right: -4px;
-	padding: 2px;
-	background: #222;
+	padding: 1px;
+	background: #000000;
 	color: #ff0101;
-	border: 1px solid #ffffff ;
+	border: 1px solid #ffffff;
+	text-align: center;
 
 }
 
 .search:focus{
 	outline: none;
 	border: 1px solid #ff0101;
+	box-shadow: 0 0 10px #ff0101;
+	transition: 0.50s linear;
+	
 }
 
 .go{
 	height: 26px;
 	width: 40px;
-	background: #222;
+	background: #000000;
 	color: #ff0101;
 	border: 1px solid #ff0101;
 }
@@ -132,8 +148,10 @@ form{
 	background: #ff0101;
 	color: #222;
 	cursor: pointer;
+	box-shadow: 0 0 10px #ff0101;
 }
 
 .go:focus{
 	outline: none;
+	
 }
