@@ -23,7 +23,8 @@ body{
 	-o-background-size: cover;
 	background-size: cover;
 	
-	padding-top: 5%;
+	padding-top: 4%;
+	padding-left: 0%;
 	font: Steelfish;
 	font-size: 16px;
 	-webkit-font-smoothing: antialiased;
@@ -92,7 +93,7 @@ a:hover{
 */
 .googles{
 	width: 90%;
-	margin: 60px auto;
+	margin: 30px auto;
 	text-align: center;
 }
 
@@ -120,6 +121,10 @@ form{
 	::placeholder { 
   color: #f8f8ff;
   }
+ 
+ input:focus::-webkit-input-placeholder {
+    opacity: 0;
+}
 .search{
 	width: 400px;
 	height: 20px;
@@ -139,10 +144,6 @@ form{
 	transition: 0.50s linear;
 	
 }
- 
-input:focus::-webkit-input-placeholder {
-    opacity: 0;
-}
 
 .go{
 	height: 26px;
@@ -161,5 +162,18 @@ input:focus::-webkit-input-placeholder {
 
 .go:focus{
 	outline: none;
-	
+body {
+    background: black;
 }
+
+.clock{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #ff0101;
+    font-size: 60px;
+    font-family: Orbitron;
+    letter-spacing: 7px;
+   }
+

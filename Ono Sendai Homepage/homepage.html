@@ -2,6 +2,30 @@
 <html>
 	<head>
 		<title>ホメパゲ</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+ <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Orbitron'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Aldrich'>
+<style>
+
+.clock {
+    position: absolute;
+    bottom: 87px;
+    right: 115px;
+    
+    color: #ff0101;
+    font-size: 20px;
+    font-family: Orbitron;
+    letter-spacing: 7px;
+   
+
+
+}
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
 		<link rel='stylesheet' type='text/css' href='homepage.css'/>
 	</head>
 	
@@ -95,6 +119,9 @@
 			</div>
 		</div>
 		
+     <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+	  <script  src="./script.js"></script>
+	  
 		<div class='googles'>
 			<p><a href='https://drive.google.com' target='_blank'>Google Drive</a></p>
 			<p><a href='https://mail.google.com' target='_blank'>Gmail</a></p>
@@ -117,16 +144,20 @@
 			<input class='go' type='submit' value='GO'/>
 		</form>
 		
+		<form method="get" action="https://it.wikipedia.org/w/index.php?search="> 
+			<input class='search' name='q' type='text' placeholder='Wikipedia'/> 
+			<input class='go' type='submit' value='GO'/>
+		</form>
 		<form method="get" action="https://www.amazon.it/exec/obidos/external-search"> 
 			<input class='search' name='q' type='text' placeholder='Amazon'/> 
 			<input class='go' type='submit' value='GO'/>
 		</form>
 		
-		<form method="get" action="https://it.wikipedia.org/w/index.php?search="> 
-			<input class='search' name='q' type='text' placeholder='Wikipedia'/> 
-			<input class='go' type='submit' value='GO'/>
-		</form>
+
 		
-		
+
+    
+
+    	
 	</body>
 </html>
