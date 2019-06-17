@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ホメパゲ</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+ <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Orbitron'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Aldrich'>
+<style>
+
+.clock {
+    position: absolute;
+    bottom: 85px;
+    right: 110px;
+    color: #ff0101;
+    font-size: 20px;
+    font-family: Orbitron;
+    letter-spacing: 7px;
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+		<link rel='stylesheet' type='text/css' href='homepage.css'/>
+<script type="text/javascript" language="javascript">
+var $=function(id) { return document.getElementById(id); };
+var help="<ul> \
+    <li><b>!g</b> = Search Google (Default)</li> \
+    <li><b>!i</b> = Search Google Images</li> \
+	<li><b>!d</b> = Search DuckDuckGo</li> \
+    <li><b>!m</b> = Search IMDb</li> \
+	<li><b>!p</b> = Search Pinterest</li> \
+    <li><b>!u</b> = Search Urban Dictionary</li> \
+    <li><b>!w</b> = Search Wikipedia</li> \
+    <li><b>!y</b> = Search YouTube</li> \
+</ul>";
+
+var search=[ // Search engines
+    ["",    "https://www.google.com/#q="],                           // Google (Default)
+    ["!g",  "https://www.google.com/#q="],                           // Google
+    ["!i",  "https://www.google.com/search?tbm=isch&q="],            // Google Images
+    ["!d",  "https://duckduckgo.com/?q="],                          // DuckDuckGo
+    ["!m",  "https://www.imdb.com/find?q="],                         // IMDb
+    ["!p",  "https://www.pinterest.com/search/pins/?q="],           // Pinterest
+    ["!u",  "http://www.urbandictionary.com/define.php?term="],     // Urban Dictionary
+    ["!w",  "http://it.wikipedia.org/w/index.php?search="],         // Wikipedia
+    ["!y",  "https://www.youtube.com/results?search_query="],       // YouTube
+];
+
+var i,ss="";
+function init() {
+    for(i=0;i<search.length;i++) if(search[i][0]=="") ss=search[i][1];
+    if(ss=="") alert("Error: Missing default search engine!");
+    $('help').innerHTML=help;
+	if(localStorage.getItem('note')!=null) if(localStorage.getItem('note').length!=0) toggleNote();
+    build();
+    if(showPreview) preview(0,0);
+    $('q').value="";
+    $('q').focus();
+}
+
+
+function handleQuery(e,q) { // Handle search query
+    var key=e.keyCode || e.which;
+
+    if(key==13) { // Enter
+        var x=q.lastIndexOf("!");
+
+        if(x!=-1 && x>=q.length-2) {
+            for(i=0;i<search.length;i++) {
+                if(search[i][0]==q.substr(x)) { // Find "*!i"
+                    window.location=search[i][1]+q.substr(0,x).replace(/&/g,"%26");
+                    return true;
+                }
+            }
+            // Invalid "!i", use default
+            window.location=ss+q.substr(0,x).replace(/&/g,"%26");
+        } else {
+            // "!i" where not specified, use default
+            window.location=ss+q.replace(/&/g,"%26");
+        }
+    }
+}
+
+var pT;
+function preview(c,x) {
+    clearTimeout(pT);
+    switch(c) {
+        case 0: // mouseout
+            $('overlay').style.opacity=1;
+            pT=setTimeout(function() { $('preview').src="about:blank"; },500);
+            break;
+        case 1: // mouseover
+            pT=setTimeout(function() { $('preview').src=x; },100);
+            break;
+        default: // load
+            if($('preview').src!="about:blank") $('overlay').style.opacity=.75;
+    }
+}
+</script>
+	</head>
+	<body>
+		   
+		<div class='favorites'> 
+			<div class='list fav-magazines'>
+				<p>/Magazines</p>
+				<ul>
+					<li><a href='https://huffingtonpost.it/' target='_blank'>Huffington Post</a></li>
+					<li><a href='https://www.mangaeden.com/it/' target='_blank'>MangaEden</a></li>
+					<li><a href='https://www.zerocalcare.it/' target='_blank'>ZeroCalcare</a></li>
+					<li><a href='https://www.delicatessen666.blogspot.it/?zx=1d86f903e9c8a98c' target='_blank'>Delicatessen</a></li>
+					<li><a href='https://bagniproeliator.it' target='_blank'>Bagni Proeliator</a></li>
+					<li><a href='https://incomaemeglio.blogspot.com/' target='_blank'>InComaèMeglio</a></li>
+					<li><a href='https://www.awwwards.com' target='_blank'>Awwwards</a></li>
+					<li><a href='https://leganerd.com/' target='_blank'>Lega Nerd</a></li>
+					<li><a href='https://Wired.it' target='_blank'>Wired</a></li>
+					<li><a href='https://vice.com/it/' target='_blank'>Vice</a></li>
+				</ul>
+			</div>
+			
+			<div class='list fav-media'>
+				<p>/Media</p>
+				<ul>
+					<li><a href='https://www.piratestreaming.watch/' target='_blank'>Pirate Streaming</a></li>
+					<li><a href='https://www.piratestreaming.info/' target='_blank'>Pirate Stream </a></li>
+					<li><a href='https://www.soundcloud.com' target='_blank'>SoundCloud</a></li>
+					<li><a href='https://www.weebcrew.moe/' target='_blank'>Weebcrew</a></li>
+					<li><a href='https://www.youtube.com' target='_blank'>YouTube</a></li>
+					<li><a href='https://www.vvvvid.it/#!channel/0/you' target='_blank'>Vvvvid</a></li>
+					<li><a href='https://www.twitch.tv/' target='_blank'>Twitch</a></li>
+					<li><a href='https://www.reddit.com' target='_blank'>Reddit</a></li>
+					<li><a href='https://www.suptv.org/' target='_blank'>SupTv</a></li>
+				</ul>
+			</div>
+
+			<div class='list fav-personal'>
+				<p>/Personal</p>
+				<ul>
+					<li><a href='https://facebook.com' target='_blank'>Facebook</a></li>
+					<li><a href='https://www.dropbox.com' target='_blank'>Dropbox</a></li>
+					<li><a href='https://www.pinterest.com/' target='_blank'>Pinterest</a></li>
+					<li><a href='https://www.anobii.com/' target='_blank'>Anobii</a></li>
+					<li><a href='https://www.coinbase.com/dashboard' target='_blank'>Coinbase</a></li>
+					<li><a href='https://soundcloud.com/w1nt3rmute' target='_blank'>W1nt3rMut3</a></li>
+					<li><a href='https://d.pr/home' target='_blank'>Droplr</a></li>
+					<li><a href='https://hack.chat/' target='_blank'>Hack.ch@t</a></li>
+					<li><a href='https://www.github.com' target='_blank'>GitHub</a></li>
+				</ul>
+			</div>
+
+			<div class='list fav-skillz'>
+				<p>/Skillz</p>
+				<ul>
+					<li><a href='https://web-development.zeef.com/eduardo.bilk#block_38893_front-end' target='_blank'>Dev Resources</a></li>
+					<li><a href='http://www.freecodecamp.com/map' target='_blank'>Free Code Camp</a></li>
+					<li><a href='http://www.theodinproject.com' target='_blank'>The Odin Project</a></li>
+					<li><a href='http://www.stackoverflow.com' target='_blank'>Stack Overflow</a></li>
+					<li><a href='http://www.udacity.com' target='_blank'>Udacity</a></li>
+					<li><a href='http://www.superfreedraw.com' target='_blank'>Superfreedraw</a></li>
+					<li><a href='https://www.deviantart.com' target='_blank'>DeviantArt</a></li>
+					<li><a href='https://www.codecademy.com/' target='_blank'>Codecademy</a></li>
+				</ul>
+			</div>
+			
+			<div class='list fav-torrentz'>
+				<p>/Torrentz</p>
+				<ul>
+					<li><a href='https://proxtpb.art/', target='_blank'>The Pirate Bay</a></li>
+					<li><a href='https://ilcorsaronero.me', target='_blank'>ilCorSaRoNeRo</a></li>
+					<li><a href='http://forum.tntvillage.scambioetico.org/index.php?act=Login&CODE=00' target='_blank'>TNT Village</a></li>
+					<li><a href='https://rarbg.to/index8.php' target='_blank'>Rar.bg </a></li>
+					<li><a href='https://skidrowgames.net' target='_blank'>Skidrow</a></li>
+					<li><a href='https://1337x.to', target='_blank'>1337x</a></li>
+					<li><a href='https://yts.am/', target='_blank'>Yts</a></li>
+					<li><a href='https://boards.4chan.org/t/catalog' target='_blank'>/t/</a></li>
+				</ul>
+			</div>
+			
+			<div class='list fav-4Chan'>
+				<p>/4Chan</p>
+				<ul>
+					<li><a href='https://boards.4chan.org/a/catalog/' target='_blank'>/a/</a></li>
+					<li><a href='https://boards.4chan.org/b/catalog' target='_blank'>/b/</a></li>
+					<li><a href='https://boards.4chan.org/biz/catalog' target='_blank'>/biz/</a></li>
+					<li><a href='https://boards.4chan.org/g/catalog' target='_blank'>/g/</a></li>
+					<li><a href='https://boards.4chan.org/gif/catalog' target='_blank'>/gif/</a></li>
+					<li><a href='https://boards.4chan.org/lit/catalog' target='_blank'>/lit/</a></li>
+					<li><a href='https://boards.4chan.org/mu/catalog' target='_blank'>/mu/</a></li>
+					<li><a href='https://boards.4chan.org/p/catalog' target='_blank'>/p/</a></li>
+					<li><a href='https://boards.4chan.org/pol/catalog' target='_blank'>/pol/</a></li>
+					<li><a href='https://boards.4chan.org/wg/catalog' target='_blank'>/wg/</a></li>
+					<li><a href='https://boards.4chan.org/wsg/catalog' target='_blank'>/wsg/</a></li>
+					<li><a href='https://boards.4chan.org/x/catalog' target='_blank'>/x/</a></li>
+				</ul>
+			</div>
+		</div>
+     <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+	  <script  src="./script.js"></script>
+	  
+		<div class='googles'>
+			<p><a href='https://drive.google.com' target='_blank'>Google Drive</a></p>
+			<p><a href='https://mail.google.com' target='_blank'>Gmail</a></p>
+			<p><a href='https://www.dropbox.com' target='_blank'>Dropbox</a></p>
+			<p><a href='https://www.dropbox.com' target='_blank'>Dropbox</a></p>
+		</div>
+		
+		
+
+		
+
+<body onload="javascript:init();">
+<div id="search">
+    <div id="search">
+        <input type="text" value="" placeholder="Search" onkeypress="javascript:handleQuery(event,this.value);" onfocus="this.value=this.value" class='search' name='search' type='text'/>
+    </div>
+    
+
+    	
+	</body>
+</html>
